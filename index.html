@@ -1,0 +1,2043 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <!-- 
+============================================
+免责声明：
+本网站仅供学习交流与练习使用，所有展示数据均为虚构。
+网站内素材均来源于公开网络，如有侵权请联系删除。
+本网站不涉及任何商业用途，不存储真实个人信息。
+============================================
+-->
+    <meta charset="UTF-8" />
+    <title>山东省德州市实验中学2024级成绩查询</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #f2f2f2;
+        font-family:
+          "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+      }
+      .phone {
+        width: 390px;
+        min-height: 100vh;
+        background: #fff;
+        position: relative;
+      }
+
+      /* status bar — 保留但隐藏文字，只留信号栏，但为了干净也可删除，这里保持简洁 */
+      .status-bar {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #000;
+        background: #fff;
+      }
+      .status-bar .icons {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .signal-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 10px;
+      }
+      .signal-bars span {
+        width: 3px;
+        background: #000;
+        border-radius: 1px;
+      }
+      .signal-bars span:nth-child(1) {
+        height: 4px;
+      }
+      .signal-bars span:nth-child(2) {
+        height: 6px;
+      }
+      .signal-bars span:nth-child(3) {
+        height: 8px;
+      }
+      .signal-bars span:nth-child(4) {
+        height: 10px;
+      }
+      .battery {
+        width: 24px;
+        height: 12px;
+        border: 1px solid #000;
+        border-radius: 3px;
+        position: relative;
+        padding: 1.5px;
+      }
+      .battery::after {
+        content: "";
+        position: absolute;
+        right: -4px;
+        top: 3.5px;
+        width: 2px;
+        height: 5px;
+        background: #000;
+        border-radius: 0 1px 1px 0;
+      }
+      .battery-fill {
+        height: 100%;
+        width: 75%;
+        background: #000;
+        border-radius: 1px;
+      }
+
+      /* header — 只保留 logo，移除文字 */
+      .header {
+        background: #1a9e4a;
+        background: linear-gradient(180deg, #1fa350, #178a41);
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* 左对齐 */
+        min-height: 62px; /* 保证高度不变 */
+      }
+      .header .logo {
+        width: 38px; /* 稍微放大一点，更醒目 */
+        height: 38px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        overflow: hidden; /* 保证图片圆角裁剪 */
+      }
+      .header .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 保持比例填充 */
+        object-position: 0% 50%; /* 水平偏移30%，垂直居中 */
+        object-fit: cover; /* 保持图片比例填充 */
+        display: block;
+        justify-content: center;
+      }
+      /* 移除多余的标题文字，只要 logo */
+
+      /* form */
+      .form-area {
+        padding: 22px 18px 8px 18px;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field input {
+        width: 100%;
+        height: 44px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        background: #f7f7f7;
+        padding: 0 14px;
+        font-size: 14px;
+        color: #333;
+        outline: none;
+      }
+      .field input::placeholder {
+        color: #aaa;
+        font-size: 14px;
+      }
+      .field input:focus {
+        border-color: #1fa350;
+        background: #fff;
+      }
+
+      .captcha-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .captcha-row input {
+        flex: 1;
+        height: 44px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        background: #f7f7f7;
+        padding: 0 14px;
+        font-size: 14px;
+        color: #333;
+        outline: none;
+      }
+      .captcha-row input::placeholder {
+        color: #aaa;
+        font-size: 14px;
+      }
+      .captcha-img {
+        width: 96px;
+        height: 44px;
+        border-radius: 4px;
+        flex-shrink: 0;
+        cursor: pointer;
+        background:
+          repeating-linear-gradient(
+            115deg,
+            rgba(255, 255, 255, 0.5) 0 2px,
+            transparent 2px 6px
+          ),
+          linear-gradient(100deg, #b9d9c4, #e7d6a3 40%, #cbd8ea 70%, #d9c9df);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 19px;
+        letter-spacing: 1px;
+        color: #3d3d3d;
+      }
+      .captcha-img span {
+        display: inline-block;
+        transform: skewX(-8deg);
+      }
+      .captcha-img span:nth-child(odd) {
+        transform: skewX(-8deg) translateY(-2px) rotate(-6deg);
+      }
+      .captcha-img span:nth-child(even) {
+        transform: skewX(8deg) translateY(2px) rotate(5deg);
+      }
+
+      .query-btn {
+        width: 100%;
+        height: 46px;
+        background: linear-gradient(180deg, #22ab57, #1a9448);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        margin-top: 6px;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      .query-btn:active {
+        filter: brightness(0.95);
+      }
+
+      /* tips box */
+      .tips {
+        margin: 0 18px 22px 18px;
+        border: 1px solid #cfe8d8;
+        background: #f4fbf6;
+        border-radius: 4px;
+        padding: 12px 12px 12px 12px;
+      }
+      .tips-title {
+        display: inline-block;
+        background: #22ab57;
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 10px;
+        border-radius: 2px;
+        margin-bottom: 8px;
+      }
+      .tips p {
+        font-size: 12.5px;
+        color: #444;
+        line-height: 1.7;
+      }
+      .tips a {
+        color: #1a73c7;
+      }
+
+      /* footer */
+      .footer {
+        text-align: center;
+        font-size: 11px;
+        color: #888;
+        line-height: 1.9;
+        padding-bottom: 30px;
+      }
+      .footer .beian-icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #1a73c7;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin: 0 2px;
+      }
+
+      /* 微调：状态栏可以不显示，但为了更像真机保留；也可以隐藏，但为了美观保留 */
+      /* 也可以去掉状态栏，但这里保留，不影响主要需求 */
+
+      /* ===================== 新增：查询结果页（练习用，仅示例数据） ===================== */
+      .demo-banner {
+        background: #fff7e0;
+        color: #8a6d1d;
+        font-size: 12px;
+        text-align: center;
+        padding: 6px 10px;
+        border-bottom: 1px solid #f0e0b0;
+      }
+      .result-view {
+        display: none;
+      }
+      .result-header {
+        background: linear-gradient(180deg, #1fa350, #178a41);
+        color: #fff;
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .result-header .back-arrow {
+        font-size: 20px;
+        margin-right: 4px;
+        cursor: pointer;
+      }
+      .result-body {
+        padding: 18px 18px 4px 18px;
+      }
+      .info-row {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #222;
+      }
+      .qr-wrap {
+        display: flex;
+        justify-content: center;
+        margin: 14px 0 18px 0;
+      }
+      .qr-canvas {
+        width: 130px;
+        height: 130px;
+        border: 1px solid #eee;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 16px 0 8px 0;
+      }
+      .section-title .bar {
+        width: 4px;
+        height: 16px;
+        background: #22ab57;
+        display: inline-block;
+      }
+      table.score-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        text-align: center;
+        margin-bottom: 6px;
+      }
+      table.score-table th,
+      table.score-table td {
+        border: 1px solid #ddd;
+        padding: 6px 2px;
+      }
+      table.score-table th {
+        background: #f5f5f5;
+        font-weight: 600;
+      }
+      .note-text {
+        font-size: 12px;
+        color: #555;
+        line-height: 1.8;
+        margin: 10px 0 16px 0;
+      }
+      .practice-code {
+  font-size: 11.5px;
+  color: #999;
+  word-break: break-all;
+  margin-bottom: 2px;      
+  margin-top: 8px;         
+  line-height: 1.6;
+}
+.practice-code .tips {
+  margin-top: 8px;         
+  margin-bottom: 4px;
+}
+      .exit-btn {
+  width: 90%;
+  height: 46px;
+  background: linear-gradient(180deg, #22ab57, #1a9448);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin: 0 auto 24px auto;
+  cursor: pointer;
+  display: block;
+}
+    /* ===== 水印层 ===== */
+.watermark-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+.watermark-text {
+  font-size: 11px;
+  color: rgba(0,0,0,0.15);
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 30px;
+  width: 200%;
+  height: 200%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 8px 10px;
+  padding: 10px;
+  transform: rotate(-45deg) scale(1.8) translate(20px, 20px);
+
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.watermark-text .line {
+  display: inline-block;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+    @keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.history-btn {
+  width: 90%;
+  height: 46px;
+  background: linear-gradient(180deg, #e74c3c, #c0392b);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0 auto 12px auto;
+  cursor: pointer;
+  display: block;
+}
+.history-btn:active {
+  filter: brightness(0.95);
+}
+    /* 历史列表 - 无竖线表格 */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.history-table th,
+.history-table td {
+  border-top: 1px solid #22ab57;
+  border-bottom: 1px solid #22ab57;
+  padding: 10px 6px;
+  background: #f0faf2;
+}
+.history-table th {
+  background: #d4edda;
+  font-weight: 600;
+  border-top: 2px solid #22ab57;
+  border-bottom: 2px solid #22ab57;
+}
+.history-table tr:last-child td {
+  border-bottom: 2px solid #22ab57;
+}
+.history-table tr:first-child th {
+  border-top: 2px solid #22ab57;
+}
+.arrow-link {
+  color: #22ab57;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 4px;
+  transition: transform 0.2s;
+}
+.arrow-link:hover {
+  transform: translateX(3px);
+}
+.arrow-link:active {
+  opacity: 0.6;
+}
+    /* 右上角二维码 */
+.qr-header {
+  position: absolute;
+  top: 70px;
+  right: 19px;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: #fff;
+  padding: 6px;
+}
+.qr-header img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.result-header {
+  position: relative;
+}
+    </style>
+  </head>
+  <body>
+    <div class="phone" id="mainView">
+      <!-- 状态栏：保留无伤大雅，若不需要可删除，但保留不影响logo显示 -->
+      <!-- <div class="status-bar">
+        <span>15:34</span>
+        <div class="icons">
+          <div class="signal-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <span>5G</span>
+          <div class="battery"><div class="battery-fill"></div></div>
+        </div>
+      </div> -->
+
+      <!-- 头部：只显示左侧logo，右侧文字已移除 -->
+      <div class="header">
+        <div class="logo">
+          <img
+            src="https://dzsygz.cn/Public/home/images/xiaoyoulogo.jpg"
+            alt="logo"
+          />
+        </div>
+        <!-- 此处删掉所有文字，只保留 logo -->
+
+        <div class="header">
+          <!-- <div class="logo">&#9678;</div> -->
+          <div>德州市实验中学2024级成绩查询</div>
+        </div>
+      </div>
+
+      <div class="form-area">
+        <div class="field">
+          <input type="text" placeholder="输入考生姓名" />
+        </div>
+        <div class="field">
+          <input type="text" placeholder="输入考籍号" />
+        </div>
+        <div class="field">
+          <input type="text" placeholder="输入身份证后四位" />
+        </div>
+        <div class="captcha-row">
+          <input type="text" placeholder="输入验证码" />
+          <div class="captcha-img" title="点击刷新验证码">
+            <span>S</span><span>C</span><span>W</span><span>7</span
+            ><span>d</span>
+          </div>
+        </div>
+        <!-- ===== 滑动验证码 ===== -->
+<style>
+  .slider-captcha {
+    margin: 16px 0 10px 0;
+    background: #f7f9fc;
+    border-radius: 6px;
+    border: 1px solid #e0e5ec;
+    padding: 10px 12px 12px 12px;
+    user-select: none;
+  }
+  .slider-captcha .slider-label {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .slider-captcha .slider-label .status {
+    font-weight: 600;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .slider-captcha .slider-label .status.success {
+    color: #1a9448;
+  }
+  .slider-captcha .slider-label .status.error {
+    color: #e74c3c;
+  }
+  .slider-track {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #e8ecf1;
+    border-radius: 40px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .slider-track .slider-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #8fd9a8, #22ab57);
+    border-radius: 40px;
+    transition: width 0.05s linear;
+    pointer-events: none;
+  }
+  .slider-track .slider-btn {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #22ab57;
+    cursor: grab;
+    transition: box-shadow 0.15s;
+    z-index: 2;
+    touch-action: none;
+  }
+  .slider-track .slider-btn:active {
+    cursor: grabbing;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .slider-track .slider-hint {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    color: #999;
+    pointer-events: none;
+    white-space: nowrap;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .slider-track .slider-hint i {
+    font-style: normal;
+    margin-right: 6px;
+  }
+  .slider-captcha .slider-reset {
+    text-align: right;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #1a73c7;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  .slider-captcha .slider-reset:hover {
+    opacity: 1;
+  }
+</style>
+
+<div class="slider-captcha" id="sliderCaptcha">
+  <div class="slider-label">
+    <span>请按住滑块拖动到最右侧</span>
+    <span class="status" id="sliderStatus">未验证</span>
+  </div>
+  <div class="slider-track" id="sliderTrack">
+    <div class="slider-bg" id="sliderBg"></div>
+    <div class="slider-btn" id="sliderBtn">▶</div>
+    <div class="slider-hint" id="sliderHint"><i>⟶</i> 滑动验证</div>
+  </div>
+  <div class="slider-reset" id="sliderReset">↻ 重置</div>
+</div>
+
+<script>
+  (function() {
+    const track = document.getElementById('sliderTrack');
+    const btn = document.getElementById('sliderBtn');
+    const bg = document.getElementById('sliderBg');
+    const hint = document.getElementById('sliderHint');
+    const status = document.getElementById('sliderStatus');
+    const resetBtn = document.getElementById('sliderReset');
+
+    let isDragging = false;
+    let currentX = 0;
+    const maxOffset = track.offsetWidth - btn.offsetWidth - 2;
+
+    function resetSlider() {
+      isDragging = false;
+      btn.style.left = '0px';
+      bg.style.width = '0%';
+      hint.style.opacity = '1';
+      status.textContent = '未验证';
+      status.className = 'status';
+      status.style.color = '#555';
+      btn.style.cursor = 'grab';
+    }
+
+    function verifySuccess() {
+      isDragging = false;
+      status.textContent = '验证通过';
+      status.className = 'status success';
+      status.style.color = '#1a9448';
+      btn.style.cursor = 'default';
+      hint.style.opacity = '0';
+      document.dispatchEvent(new CustomEvent('sliderVerified', { detail: { success: true } }));
+    }
+
+    function verifyFail() {
+      isDragging = false;
+      status.textContent = '请拖到最右侧';
+      status.className = 'status error';
+      status.style.color = '#e74c3c';
+      setTimeout(() => { resetSlider(); }, 800);
+    }
+
+    function updatePosition(clientX) {
+      if (!isDragging) return;
+      const rect = track.getBoundingClientRect();
+      let offset = clientX - rect.left - btn.offsetWidth / 2;
+      offset = Math.max(0, Math.min(offset, maxOffset));
+      btn.style.left = offset + 'px';
+      bg.style.width = (offset / maxOffset * 100) + '%';
+      currentX = offset;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      isDragging = true;
+      btn.style.cursor = 'grabbing';
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+
+    function onMouseMove(e) { updatePosition(e.clientX); }
+    function onMouseUp(e) {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+      if (!isDragging) return;
+      if (currentX >= maxOffset - 2) { verifySuccess(); } 
+      else { verifyFail(); }
+    }
+
+    btn.addEventListener('touchstart', function(e) {
+      const touch = e.touches[0];
+      if (!touch) return;
+      isDragging = true;
+      btn.style.cursor = 'grabbing';
+      document.addEventListener('touchmove', onTouchMove, { passive: false });
+      document.addEventListener('touchend', onTouchEnd, { passive: false });
+    }, { passive: true });
+
+    function onTouchMove(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      if (!touch) return;
+      updatePosition(touch.clientX);
+    }
+
+    function onTouchEnd(e) {
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('touchend', onTouchEnd);
+      if (!isDragging) return;
+      if (currentX >= maxOffset - 2) { verifySuccess(); } 
+      else { verifyFail(); }
+    }
+
+    resetBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      resetSlider();
+    });
+
+    resetSlider();
+    window.resetSliderCaptcha = resetSlider;
+  })();
+</script>
+<!-- ===== 滑动验证码结束 ===== -->
+
+        <button class="query-btn" id="queryBtn">查 询</button>
+      </div>
+      
+
+       <div class="tips">
+        <span class="tips-title">温馨提示</span>
+        <p>
+          1、查询时间为最新考试结果发布结束后次日00:00分。<br />
+          2、"手机短信密码"为登录山东省德州市实验中学2024级考试信息平台的手机短信密码，考生忘记可通过平台找回。
+        </p>
+      </div> -->
+
+      <!-- 底部信息保留或注释均可，不影响logo -->
+       <div class="footer">
+        版权所有：山东省教育招生考试院<br />
+        鲁ICP备15041457号 &nbsp; <span class="beian-icon"></span> 鲁公网安备
+        37010202001292号
+      </div> -->
+    </div>
+
+    <!-- ===================== 新增：查询结果示例页（练习用途，全部为虚构数据） ===================== -->
+    <div class="phone result-view" id="resultView">
+    <!-- 水印层 -->
+<div class="watermark-layer" id="watermarkLayer">
+  <div class="watermark-text" id="watermarkText"></div>
+</div>
+<div class="result-header">
+  <span class="back-arrow" onclick="hideResult()">&#8592;</span>
+  <span>德州市实验中学2024级成绩查询</span>
+  <div class="qr-header">
+    <img id="qrImg" src="" alt="二维码" />
+  </div>
+</div>
+
+      <div class="result-body">
+        <div class="info-row">考籍号：2024371401000330656</div>
+        <div class="info-row">姓 名：唐心语</div>
+        <div class="info-row">最新考试时间：2026/07/09</div>
+
+        <!-- <div class="qr-wrap">
+          <canvas
+            class="qr-canvas"
+            id="qrCanvas"
+            width="130"
+            height="130"
+          ></canvas>
+        </div> -->
+
+        <div class="section-title"><span class="bar"></span>成绩信息</div>
+        <table class="score-table">
+  <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+  <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+  <tr><td>124</td><td>148</td><td>148</td><td>100</td><td>93</td><td>89</td><td>702</td><td>661</td></tr>
+</table>
+
+        <div class="section-title"><span class="bar"></span>位次信息</div>
+        <table class="score-table">
+          <tr>
+            <th>校排名</th>
+            <th>班排名</th>
+            <th>主科校排名</th>
+            <th>选科校排名</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+          </tr>
+        </table>
+
+         <div class="practice-code">
+         <div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div>
+         <div class="tips">
+         <span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+      </div>-->
+
+        <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+<button class="exit-btn" onclick="hideResult()">退 出</button>
+      </div>
+    </div>
+<!-- 历史成绩列表页面（考试目录） -->
+<div class="phone history-view" id="historyView" style="display:none;">
+  <!-- 头部 -->
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideHistory()">&#8592;</span>
+    <span>历史考试列表</span>
+  </div>
+
+  <!-- 内容 -->
+  <div class="result-body">
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考籍号：2024371401000330656</div>
+
+    <!-- ===== 2024-2025学年 第一学期 ===== -->
+    <div class="section-title"><span class="bar"></span>2024-2025学年 第一学期</div>
+    <table class="history-table">
+      <thead>
+        <tr><th>考试名称</th><th>考试时间</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>新学期学情复测</td><td>2024/08/31</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第一学期', '新学期学情复测', '2024/08/31')">→</span></td></tr>
+        <tr><td>月度学业质量检测</td><td>2024/09/26</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第一学期', '月度学业质量检测', '2024/09/26')">→</span></td></tr>
+        <tr><td>期中学情诊断评估</td><td>2024/11/04</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第一学期', '期中学情诊断评估', '2024/11/04')">→</span></td></tr>
+        <tr><td>德州市跨校学业诊断统考</td><td>2024/12/16</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第一学期', '德州市跨校学业诊断统考', '2024/12/16')">→</span></td></tr>
+        <tr><td>期末学情诊断评估</td><td>2025/01/13</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第一学期', '期末学情诊断评估', '2025/01/13')">→</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ===== 2024-2025学年 第二学期 ===== -->
+    <div class="section-title"><span class="bar"></span>2024-2025学年 第二学期</div>
+    <table class="history-table">
+      <thead>
+        <tr><th>考试名称</th><th>考试时间</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>新学期学情复测</td><td>2025/02/17</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第二学期', '新学期学情复测', '2025/02/17')">→</span></td></tr>
+        <tr><td>月度学业质量检测</td><td>2025/03/20</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第二学期', '月度学业质量检测', '2025/03/20')">→</span></td></tr>
+        <tr><td>期中学情诊断评估</td><td>2025/04/21</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第二学期', '期中学情诊断评估', '2025/04/21')">→</span></td></tr>
+        <tr><td>德州市跨校学业诊断统考</td><td>2025/05/26</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第二学期', '德州市跨校学业诊断统考', '2025/05/26')">→</span></td></tr>
+        <tr><td>期末学情诊断评估</td><td>2025/07/07</td><td><span class="arrow-link" onclick="showExamDetail('2024-2025 第二学期', '期末学情诊断评估', '2025/07/07')">→</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ===== 2025-2026学年 第一学期 ===== -->
+    <div class="section-title"><span class="bar"></span>2025-2026学年 第一学期</div>
+    <table class="history-table">
+      <thead>
+        <tr><th>考试名称</th><th>考试时间</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>新学期学情复测</td><td>2025/09/01</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第一学期', '新学期学情复测', '2025/09/01')">→</span></td></tr>
+        <tr><td>月度学业质量检测</td><td>2025/09/25</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第一学期', '月度学业质量检测', '2025/09/25')">→</span></td></tr>
+        <tr><td>期中学情诊断评估</td><td>2025/11/03</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第一学期', '期中学情诊断评估', '2025/11/03')">→</span></td></tr>
+        <tr><td>德州市跨校学业诊断统考</td><td>2026/01/15</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第一学期', '德州市跨校学业诊断统考', '2026/01/15')">→</span></td></tr>
+        <tr><td>期末学情诊断评估</td><td>2026/02/10</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第一学期', '期末学情诊断评估', '2026/02/10')">→</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- ===== 2025-2026学年 第二学期 ===== -->
+    <div class="section-title"><span class="bar"></span>2025-2026学年 第二学期</div>
+    <table class="history-table">
+      <thead>
+        <tr><th>考试名称</th><th>考试时间</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>新学期学情复测</td><td>2026/03/06</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第二学期', '新学期学情复测', '2026/03/06')">→</span></td></tr>
+        <tr><td>月度学业质量检测</td><td>2026/04/09</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第二学期', '月度学业质量检测', '2026/04/09')">→</span></td></tr>
+        <tr><td>期中学情诊断评估</td><td>2026/05/10</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第二学期', '期中学情诊断评估', '2026/05/10')">→</span></td></tr>
+        <tr><td>德州市跨校学业诊断统考</td><td>2026/06/23</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第二学期', '德州市跨校学业诊断统考', '2026/06/23')">→</span></td></tr>
+        <tr><td>期末学情诊断评估</td><td>2026/07/09</td><td><span class="arrow-link" onclick="showExamDetail('2025-2026 第二学期', '期末学情诊断评估', '2026/07/09')">→</span></td></tr>
+      </tbody>
+    </table>
+
+
+  <!-- 成绩趋势 -->
+<div class="tips" style="margin:16px 0 20px 0;">
+  <span class="tips-title">📈 成绩趋势</span>
+  <p style="font-size:15px;color:#333;text-align:center;line-height:2.2;">
+    <span style="font-size:16px;font-weight:bold;color:#22ab57;display:block;margin-bottom:4px;">
+      入学至今
+    </span>
+    <span style="font-size:14px;color:#444;display:block;line-height:1.8;">
+      九科总分：最低分 <span style="color:#c0392b;font-weight:bold;">545</span> 最高分 <span style="color:#c0392b;font-weight:bold;">1002.5</span> 提升 <span style="color:#22ab57;font-weight:bold;">457.5</span> 分
+    </span>
+    <span style="font-size:14px;color:#444;display:block;line-height:1.8;">
+      六科总分：最低分 <span style="color:#c0392b;font-weight:bold;">486</span> 最高分 <span style="color:#c0392b;font-weight:bold;">734</span>提升 <span style="color:#22ab57;font-weight:bold;">248</span> 分
+    </span>
+    <span style="font-size:14px;color:#444;display:block;line-height:1.8;">
+      校排名：从第 <span style="color:#c0392b;font-weight:bold;">937</span> 名进步至第 <span style="color:#22ab57;font-weight:bold;">1</span> 名
+    </span>
+</div>
+<div style="text-align:center;margin:10px 0;">
+  <span style="font-size:18px;font-family:'华文楷体','KaiTi','楷体',serif;font-weight:bold;color:#c0392b;letter-spacing:6px;border-bottom:2px solid #c0392b;padding-bottom:2px;display:inline-block;">
+    ✦ 会当凌绝顶，一览众山小 ✦
+  </span>
+</div>
+    <!-- 返回按钮 -->
+    <button class="exit-btn" onclick="hideHistory()">返 回</button>
+  </div>
+</div>
+    <script>
+      function showResult() {
+  // 显示提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:6px;"> 查询成功</div><div style="font-size:16px;color:#666;">跳转中，请稍后...</div><div style="margin-top:25px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+  
+  // 1秒后跳转
+  setTimeout(function() {
+    document.getElementById("mainView").style.display = "none";
+    document.getElementById("resultView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+    drawDemoPattern();
+  }, 1000);
+}
+      function hideResult() {
+  // 显示加载提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;"> 返回中...</div><div style="font-size:16px;color:#666;">正在返回查询页面</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+
+  // 先隐藏所有第四页面
+  for (var i = 1; i <= 20; i++) {
+    var el = document.getElementById('examDetail' + i);
+    if (el) el.style.display = 'none';
+  }
+  // 隐藏第二页面
+  document.getElementById("resultView").style.display = "none";
+
+  // 0.5秒后显示第一页面并移除提示框
+  setTimeout(function() {
+    document.getElementById("mainView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+  }, 500);
+}
+// ===== 查看历史成绩列表（跳转到第三页，带加载动画） =====
+function showHistory() {
+  // 显示加载提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;"> 加载中...</div><div style="font-size:16px;color:#666;">正在获取历史成绩列表</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+
+  // 先隐藏所有第四页面
+  for (var i = 1; i <= 20; i++) {
+    var el = document.getElementById('examDetail' + i);
+    if (el) el.style.display = 'none';
+  }
+  // 再隐藏第二页面
+  document.getElementById("resultView").style.display = "none";
+
+  // 0.5秒后显示第三页面并移除提示框
+  setTimeout(function() {
+    document.getElementById("historyView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+  }, 500);
+}
+
+// ===== 返回成绩结果页 =====
+function hideHistory() {
+  // 显示加载提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;"> 返回中...</div><div style="font-size:16px;color:#666;">正在返回成绩页面</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+
+  // 隐藏第三页面
+  document.getElementById("historyView").style.display = "none";
+
+  // 0.5秒后显示第二页面并移除提示框
+  setTimeout(function() {
+    document.getElementById("resultView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+  }, 500);
+}
+// ===== 查看单次考试详情（跳转到第四页面，带加载动画） =====
+function showExamDetail(semester, examName, examDate) {
+  // 显示加载提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;">📄 加载中...</div><div style="font-size:16px;color:#666;">正在获取考试详情</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+
+  // 隐藏第三页面
+  document.getElementById("historyView").style.display = "none";
+  
+  // 根据考试名称和日期匹配对应的第四页面
+  var id = "";
+  
+  // 第一学期
+  if (examName === "新学期学情复测" && examDate === "2024/08/31") id = "examDetail1";
+  else if (examName === "月度学业质量检测" && examDate === "2024/09/26") id = "examDetail2";
+  else if (examName === "期中学情诊断评估" && examDate === "2024/11/04") id = "examDetail3";
+  else if (examName === "德州市跨校学业诊断统考" && examDate === "2024/12/16") id = "examDetail4";
+  else if (examName === "期末学情诊断评估" && examDate === "2025/01/13") id = "examDetail5";
+  // 第二学期
+  else if (examName === "新学期学情复测" && examDate === "2025/02/17") id = "examDetail6";
+  else if (examName === "月度学业质量检测" && examDate === "2025/03/20") id = "examDetail7";
+  else if (examName === "期中学情诊断评估" && examDate === "2025/04/21") id = "examDetail8";
+  else if (examName === "德州市跨校学业诊断统考" && examDate === "2025/05/26") id = "examDetail9";
+  else if (examName === "期末学情诊断评估" && examDate === "2025/07/07") id = "examDetail10";
+  // 第三学期
+  else if (examName === "新学期学情复测" && examDate === "2025/09/01") id = "examDetail11";
+  else if (examName === "月度学业质量检测" && examDate === "2025/09/25") id = "examDetail12";
+  else if (examName === "期中学情诊断评估" && examDate === "2025/11/03") id = "examDetail13";
+  else if (examName === "德州市跨校学业诊断统考" && examDate === "2026/01/15") id = "examDetail14";
+  else if (examName === "期末学情诊断评估" && examDate === "2026/02/10") id = "examDetail15";
+  // 第四学期
+  else if (examName === "新学期学情复测" && examDate === "2026/03/06") id = "examDetail16";
+  else if (examName === "月度学业质量检测" && examDate === "2026/04/09") id = "examDetail17";
+  else if (examName === "期中学情诊断评估" && examDate === "2026/05/10") id = "examDetail18";
+  else if (examName === "德州市跨校学业诊断统考" && examDate === "2026/06/23") id = "examDetail19";
+  else if (examName === "期末学情诊断评估" && examDate === "2026/07/09") id = "examDetail20";
+  
+  // 0.5秒后显示对应第四页面并移除提示框
+  setTimeout(function() {
+    if (id) {
+      document.getElementById(id).style.display = "block";
+    } else {
+      alert("未找到对应考试详情");
+    }
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+  }, 500);
+}
+
+// ===== 返回历史列表 =====
+function hideExamDetail(id) {
+  // 显示加载提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;"> 返回中...</div><div style="font-size:16px;color:#666;">正在返回历史列表</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+
+  // 隐藏当前第四页面
+  document.getElementById(id).style.display = "none";
+
+  // 0.5秒后显示第三页面并移除提示框
+  setTimeout(function() {
+    document.getElementById("historyView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+  }, 500);
+}
+      // 纯装饰性方块图案，不编码任何链接或信息，仅用于还原版式观感
+      function drawDemoPattern() {
+        const canvas = document.getElementById("qrCanvas");
+        const ctx = canvas.getContext("2d");
+        const size = 13; // grid cells
+        const cell = canvas.width / size;
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#1a9448";
+        // deterministic pseudo-random pattern (not a real QR / encodes nothing)
+        let seed = 42;
+        function rnd() {
+          seed = (seed * 9301 + 49297) % 233280;
+          return seed / 233280;
+        }
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            if (rnd() > 0.55) {
+              ctx.fillRect(x * cell, y * cell, cell - 1, cell - 1);
+            }
+          }
+        }
+        // corner finder-style squares purely for visual resemblance
+        function corner(px, py) {
+          ctx.fillStyle = "#1a9448";
+          ctx.fillRect(px, py, cell * 3, cell * 3);
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(px + cell * 0.5, py + cell * 0.5, cell * 2, cell * 2);
+          ctx.fillStyle = "#1a9448";
+          ctx.fillRect(px + cell, py + cell, cell, cell);
+        }
+        corner(0, 0);
+        corner(canvas.width - cell * 3, 0);
+        corner(0, canvas.height - cell * 3);
+      }
+      // ========== 登录验证脚本 ==========
+      // 仅允许 姓名=张三 且 考籍号=24000000000000 的用户进入
+
+      // ============================================================
+      // 完整登录验证 + 随机验证码（仅允许 张三 / 24000000000000）
+      // ============================================================
+      // ============================================================
+      // 完整登录验证：姓名 + 考籍号 + 身份证后四位 + 随机验证码
+      // 仅允许指定账号进入 (可自行修改下方合法值)
+      // ============================================================
+      (function () {
+      // ===== 隐藏免责声明（仅在控制台显示） =====
+console.log('%c 免责声明 ', 'font-size:20px; font-weight:bold; color:#1a9448;');
+console.log('%c 本网站仅供学习交流与练习使用，所有数据均为虚构，不涉及真实个人信息。', 'font-size:14px; color:#666;');
+console.log('%c 如涉及侵权，请联系删除。', 'font-size:14px; color:#999;');
+// ==========================================
+        // ---------- 合法凭证（请按需修改） ----------
+        const VALID_NAME = "唐心语"; // 合法姓名
+        const VALID_ID = "2024371401000330656"; // 合法考籍号
+        const VALID_ID_CARD_LAST = "2640"; // 合法身份证后四位（示例）
+
+        // ---------- DOM 元素 ----------
+        const nameInput = document.querySelector(
+          ".form-area .field:nth-child(1) input",
+        );
+        const idInput = document.querySelector(
+          ".form-area .field:nth-child(2) input",
+        );
+        const idCardInput = document.querySelector(
+          ".form-area .field:nth-child(3) input",
+        );
+        const captchaInput = document.querySelector(".captcha-row input");
+        const captchaBox = document.querySelector(".captcha-img");
+        const queryBtn = document.querySelector(".query-btn");
+
+        // ---------- 验证码生成 ----------
+        let currentCaptcha = "";
+
+        function generateCaptcha(length = 4) {
+          const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+          let result = "";
+          for (let i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+          return result;
+        }
+
+        function refreshCaptcha() {
+          currentCaptcha = generateCaptcha(4);
+          const html = currentCaptcha
+            .split("")
+            .map((ch) => `<span>${ch}</span>`)
+            .join("");
+          captchaBox.innerHTML = html;
+          if (captchaInput) captchaInput.value = "";
+        }
+
+        if (captchaBox) {
+          refreshCaptcha();
+          captchaBox.addEventListener("click", function (e) {
+            e.stopPropagation();
+            refreshCaptcha();
+          });
+        }
+
+        // ---------- 提交校验 ----------
+        function handleQuery(e) {
+          if (e) e.preventDefault();
+            //  检查滑动验证
+  const sliderStatus = document.getElementById('sliderStatus');
+  if (sliderStatus.textContent !== '验证通过') {
+    alert('请先完成滑动验证！');
+    return;
+  }
+  // 新增结束
+
+
+          const name = nameInput ? nameInput.value.trim() : "";
+          const studentId = idInput ? idInput.value.trim() : "";
+          const idCard = idCardInput ? idCardInput.value.trim() : "";
+          const captcha = captchaInput ? captchaInput.value.trim() : "";
+
+          // 1. 校验姓名
+          if (name !== VALID_NAME) {
+            alert(" 姓名错误，请重新输入！");
+            if (nameInput) {
+              nameInput.value = "";
+              nameInput.focus();
+            }
+            return;
+          }
+
+          // 2. 校验考籍号
+          if (studentId !== VALID_ID) {
+            alert(" 考籍号错误，请重新输入！");
+            if (idInput) {
+              idInput.value = "";
+              idInput.focus();
+            }
+            return;
+          }
+
+          // 3. 校验身份证后四位
+          if (idCard !== VALID_ID_CARD_LAST) {
+            alert(" 身份证后四位错误，请重新输入！");
+            if (idCardInput) {
+              idCardInput.value = "";
+              idCardInput.focus();
+            }
+            return;
+          }
+
+          // 4. 校验验证码（不区分大小写）
+          if (captcha.toUpperCase() !== currentCaptcha.toUpperCase()) {
+            alert(" 验证码错误，请重新输入！");
+            if (captchaInput) {
+              captchaInput.value = "";
+              captchaInput.focus();
+            }
+            refreshCaptcha();
+            return;
+          }
+
+          // ---------- 全部通过，显示结果页 ----------
+if (typeof window.showResult === 'function') {
+  window.showResult();
+} else {
+  document.getElementById("mainView").style.display = "none";
+  document.getElementById("resultView").style.display = "block";
+}
+          if (typeof drawDemoPattern === "function") {
+            drawDemoPattern();
+          }
+        }
+
+        // 绑定查询按钮（防止重复绑定）
+        if (queryBtn) {
+          const newBtn = queryBtn.cloneNode(true);
+          queryBtn.parentNode.replaceChild(newBtn, queryBtn);
+          newBtn.addEventListener("click", handleQuery);
+        }
+
+        // 回车键支持（在所有输入框中按回车触发查询）
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            const active = document.activeElement;
+            if (
+              active &&
+              (active === nameInput ||
+                active === idInput ||
+                active === idCardInput ||
+                active === captchaInput)
+            ) {
+              e.preventDefault();
+              if (queryBtn) queryBtn.click();
+            }
+          }
+        });
+
+        // 保留全局 showResult（但不会绕过验证）
+        window.showResult = function () {
+  // 显示提示框
+  var overlay = document.createElement('div');
+  overlay.id = 'loadingToast';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;display:flex;justify-content:center;align-items:center;flex-direction:column;';
+  overlay.innerHTML = '<div style="background:#fff;padding:30px 40px;border-radius:12px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="font-size:22px;font-weight:bold;color:#1fa350;margin-bottom:12px;"> 查询成功</div><div style="font-size:16px;color:#666;">跳转中，请稍后...</div><div style="margin-top:16px;width:30px;height:30px;border:3px solid #e0e0e0;border-top:3px solid #1fa350;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block;"></div></div>';
+  document.body.appendChild(overlay);
+  
+  setTimeout(function() {
+    document.getElementById("mainView").style.display = "none";
+    document.getElementById("resultView").style.display = "block";
+    var toast = document.getElementById('loadingToast');
+    if (toast) toast.remove();
+    drawDemoPattern();
+  }, 1000);
+};
+
+        console.log(
+          " 登录验证已启用（姓名 + 考籍号 + 身份证后四位 + 随机验证码）",
+        );
+      })();
+    // 生成水印
+function generateWatermark() {
+  var container = document.getElementById('watermarkText');
+  var text = '2024371401000330656';
+  var html = '';
+  for (var i = 0; i < 300; i++) {
+    html += '<span class="line">' + text + '</span>';
+  }
+  container.innerHTML = html;
+}
+generateWatermark();
+// ===== 生成第四页面水印 =====
+function generateDetailWatermarks() {
+  var ids = [
+    'detailWatermark1', 'detailWatermark2', 'detailWatermark3', 'detailWatermark4', 'detailWatermark5',
+    'detailWatermark6', 'detailWatermark7', 'detailWatermark8', 'detailWatermark9', 'detailWatermark10',
+    'detailWatermark11', 'detailWatermark12', 'detailWatermark13', 'detailWatermark14', 'detailWatermark15',
+    'detailWatermark16', 'detailWatermark17', 'detailWatermark18', 'detailWatermark19', 'detailWatermark20'
+  ];
+  var text = '2024371401000330656';
+  for (var i = 0; i < ids.length; i++) {
+    var container = document.getElementById(ids[i]);
+    if (container) {
+      var html = '';
+      for (var j = 0; j < 300; j++) {
+        html += '<span class="line">' + text + '</span>';
+      }
+      container.innerHTML = html;
+    }
+  }
+}
+    </script>
+                <!-- ============================================================ -->
+<!-- ===== 第四页面：20次考试详细成绩（独立页面） ===== -->
+<!-- ============================================================ -->
+
+<!-- 1. 新学期学情复测 2024/08/31 -->
+<div class="phone result-view" id="examDetail1" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark1"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail1')">&#8592;</span>
+    <span>2024-2025 第一学期 · 新学期学情复测</span>
+  <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2024/08/31</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>73</td><td>41</td><td>98</td><td>42</td><td>33</td><td>70</td><td>65</td><td>55</td><td>68</td><td>545</td><td>467</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>937</td><td>39</td><td>695</td><td>850</td><td>780</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail1')">退 出</button>
+  </div>
+</div>
+
+<!-- 2. 月度学业质量检测 2024/09/26 -->
+<div class="phone result-view" id="examDetail2" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark2"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail2')">&#8592;</span>
+    <span>2024-2025 第一学期 · 月度学业质量检测</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2024/09/26</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>83</td><td>56</td><td>104</td><td>57</td><td>52</td><td>72</td><td>68</td><td>60</td><td>66</td><td>618</td><td>492.5</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>433</td><td>18</td><td>486</td><td>451</td><td>490</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail2')">退 出</button>
+  </div>
+</div>
+
+<!-- 3. 期中学情诊断评估 2024/11/04 -->
+<div class="phone result-view" id="examDetail3" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark3"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail3')">&#8592;</span>
+    <span>2024-2025 第一学期 · 期中学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2024/11/04</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>51</td><td>101</td><td>112</td><td>78</td><td>57</td><td>75</td><td>70</td><td>62</td><td>44</td><td>650</td><td>509</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>538</td><td>21</td><td>397</td><td>341</td><td>572</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail3')">退 出</button>
+  </div>
+</div>
+
+<!-- 4. 德州市跨校学业诊断统考 2024/12/16 -->
+<div class="phone result-view" id="examDetail4" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark4"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail4')">&#8592;</span>
+    <span>2024-2025 第一学期 · 德州市跨校学业诊断统考</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2024/12/16</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>108</td><td>125</td><td>118</td><td>87</td><td>89</td><td>81</td><td>75</td><td>70</td><td>98</td><td>851</td><td>793</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+  <tr><th>校排名</th><th>班排名</th><th>全市排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+  <tr><td>62</td><td>5</td><td>37215</td><td>117</td><td>42</td><td>38</td></tr>
+</table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail4')">退 出</button>
+  </div>
+</div>
+
+<!-- 5. 期末学情诊断评估 2025/01/13 -->
+<div class="phone result-view" id="examDetail5" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark5"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail5')">&#8592;</span>
+    <span>2024-2025 第一学期 · 期末学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/01/13</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>112</td><td>140</td><td>120</td><td>90</td><td>92</td><td>82</td><td>78</td><td>75</td><td>88</td><td>877</td><td>804</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>32</td><td>3</td><td>86</td><td>137</td><td>124</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail5')">退 出</button>
+  </div>
+</div>
+
+<!-- 6. 新学期学情复测 2025/02/17 -->
+<div class="phone result-view" id="examDetail6" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark6"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail6')">&#8592;</span>
+    <span>2024-2025 第二学期 · 新学期学情复测</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/02/17</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>115</td><td>134</td><td>122</td><td>91</td><td>93</td><td>85</td><td>80</td><td>78</td><td>92</td><td>891</td><td>773</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>17</td><td>2</td><td>31</td><td>28</td><td>61</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail6')">退 出</button>
+  </div>
+</div>
+
+<!-- 7. 月度学业质量检测 2025/03/20 -->
+<div class="phone result-view" id="examDetail7" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark7"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail7')">&#8592;</span>
+    <span>2024-2025 第二学期 · 月度学业质量检测</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/03/20</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>103</td><td>149</td><td>125</td><td>92</td><td>94</td><td>87</td><td>82</td><td>缺考</td><td>92</td><td>824</td><td>720</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>73</td><td>7</td><td>5</td><td>12</td><td>193</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail7')">退 出</button>
+  </div>
+</div>
+
+<!-- 8. 期中学情诊断评估 2025/04/21 -->
+<div class="phone result-view" id="examDetail8" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark8"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail8')">&#8592;</span>
+    <span>2024-2025 第二学期 · 期中学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/04/21</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>108</td><td>148</td><td>125</td><td>93</td><td>95</td><td>89</td><td>85</td><td>82</td><td>89</td><td>914</td><td>823</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>2</td><td>1</td><td>3</td><td>4</td><td>18</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail8')">退 出</button>
+  </div>
+</div>
+
+<!-- 9. 德州市跨校学业诊断统考 2025/05/26 -->
+<div class="phone result-view" id="examDetail9" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark9"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail9')">&#8592;</span>
+    <span>2024-2025 第二学期 · 德州市跨校学业诊断统考</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/05/26</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>124</td><td>150</td><td>141</td><td>98</td><td>96</td><td>97</td><td>87</td><td>95</td><td>97</td><td>985</td><td>930</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+  <tr><th>校排名</th><th>班排名</th><th>全市排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+  <tr><td>1</td><td>1</td><td>17</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail9')">退 出</button>
+  </div>
+</div>
+
+<!-- 10. 期末学情诊断评估 2025/07/07 -->
+<div class="phone result-view" id="examDetail10" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark10"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail10')">&#8592;</span>
+    <span>2024-2025 第二学期 · 期末学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/07/07</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="6">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>生物</th><th>政治</th><th>历史</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>133.5</td><td>150</td><td>148</td><td>100</td><td>97</td><td>99</td><td>90</td><td>92</td><td>93</td><td>1002.5</td><td>967</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>理科类校排名</th><th>文科类校排名</th></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail10')">退 出</button>
+  </div>
+</div>
+<!-- 11. 新学期学情复测 2025/09/01 -->
+<div class="phone result-view" id="examDetail11" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark11"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail11')">&#8592;</span>
+    <span>2025-2026 第一学期 · 新学期学情复测</span>
+  <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/09/01</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>118</td><td>142</td><td>122</td><td>96</td><td>98</td><td>82</td><td>678</td><td>643</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>2</td><td>1</td><td>2</td><td>1</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail11')">退 出</button>
+  </div>
+</div>
+
+<!-- 12. 月度学业质量检测 2025/09/25 -->
+<div class="phone result-view" id="examDetail12" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark12"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail12')">&#8592;</span>
+    <span>2025-2026 第一学期 · 月度学业质量检测</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/09/25</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>53</td><td>143</td><td>134</td><td>97</td><td>90</td><td>79</td><td>596</td><td>547</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>73</td><td>4</td><td>19</td><td>112</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail12')">退 出</button>
+  </div>
+</div>
+
+<!-- 13. 期中学情诊断评估 2025/11/03 -->
+<div class="phone result-view" id="examDetail13" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark13"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail13')">&#8592;</span>
+    <span>2025-2026 第一学期 · 期中学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2025/11/03</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>67</td><td>145</td><td>72</td><td>68</td><td>60</td><td>74</td><td>486</td><td>450</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>374</td><td>15</td><td>203</td><td>489</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail13')">退 出</button>
+  </div>
+</div>
+
+<!-- 14. 德州市跨校学业诊断统考 2026/01/15 -->
+<div class="phone result-view" id="examDetail14" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark14"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail14')">&#8592;</span>
+    <span>2025-2026 第一学期 · 德州市跨校学业诊断统考</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/01/15</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>122</td><td>150</td><td>142</td><td>99</td><td>92</td><td>96</td><td>701</td><td>683</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+  <tr><th>校排名</th><th>班排名</th><th>全市排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail14')">退 出</button>
+  </div>
+</div>
+
+<!-- 15. 期末学情诊断评估 2026/02/10 -->
+<div class="phone result-view" id="examDetail15" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark15"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail15')">&#8592;</span>
+    <span>2025-2026 第一学期 · 期末学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/02/10</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>141</td><td>148</td><td>146</td><td>100</td><td>100</td><td>99</td><td>734</td><td>697</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail15')">退 出</button>
+  </div>
+</div>
+
+<!-- 16. 新学期学情复测 2026/03/06 -->
+<div class="phone result-view" id="examDetail16" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark16"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail16')">&#8592;</span>
+    <span>2025-2026 第二学期 · 新学期学情复测</span>
+  <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/03/06</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>59</td><td>148</td><td>109</td><td>90</td><td>90</td><td>90</td><td>586</td><td>560</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>132</td><td>11</td><td>192</td><td>225</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail16')">退 出</button>
+  </div>
+</div>
+
+<!-- 17. 月度学业质量检测 2026/04/09 -->
+<div class="phone result-view" id="examDetail17" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark17"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail17')">&#8592;</span>
+    <span>2025-2026 第二学期 · 月度学业质量检测</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/04/09</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>102</td><td>146</td><td>148</td><td>87</td><td>95</td><td>93</td><td>671</td><td>623</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>5</td><td>2</td><td>2</td><td>23</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail17')">退 出</button>
+  </div>
+</div>
+
+<!-- 18. 期中学情诊断评估 2026/05/10 -->
+<div class="phone result-view" id="examDetail18" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark18"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail18')">&#8592;</span>
+    <span>2025-2026 第二学期 · 期中学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/05/10</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>缺考</td><td>缺考</td><td>缺考</td><td>缺考</td><td>缺考</td><td>缺考</td><td>0</td><td>0</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>1125</td><td>1125</td><td>1125</td><td>1125</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail18')">退 出</button>
+  </div>
+</div>
+
+<!-- 19. 德州市跨校学业诊断统考 2026/06/23 -->
+<div class="phone result-view" id="examDetail19" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark19"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail19')">&#8592;</span>
+    <span>2025-2026 第二学期 · 德州市跨校学业诊断统考</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/06/23</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>121.5</td><td>140</td><td>146</td><td>94</td><td>89</td><td>90</td><td>675.5</td><td>632.5</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+  <tr><th>校排名</th><th>班排名</th><th>全市排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+  <tr><td>2</td><td>2</td><td>8</td><td>1</td><td>22</td></tr>
+</table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail19')">退 出</button>
+  </div>
+</div>
+
+<!-- 20. 期末学情诊断评估 2026/07/09 -->
+<div class="phone result-view" id="examDetail20" style="display:none;">
+  <div class="watermark-layer"><div class="watermark-text" id="detailWatermark20"></div></div>
+  <div class="result-header">
+    <span class="back-arrow" onclick="hideExamDetail('examDetail20')">&#8592;</span>
+    <span>2025-2026 第二学期 · 期末学情诊断评估</span>
+    <div class="qr-header">
+  <img src="" alt="二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data='+encodeURIComponent(window.location.href)" />
+</div>
+  </div>
+  <div class="result-body">
+    <div class="info-row">考籍号：2024371401000330656</div>
+    <div class="info-row">姓 名：唐心语</div>
+    <div class="info-row">考试时间：2026/07/09</div>
+    <div class="section-title"><span class="bar"></span>成绩信息</div>
+    <table class="score-table">
+      <tr><th colspan="3">统考科目</th><th colspan="3">选考科目</th><th colspan="2">总分</th></tr>
+      <tr><th>语文</th><th>数学</th><th>英语</th><th>物理</th><th>化学</th><th>地理</th><th>转化分</th><th>原始分</th></tr>
+      <tr><td>124</td><td>148</td><td>148</td><td>100</td><td>93</td><td>89</td><td>702</td><td>661</td></tr>
+    </table>
+    <div class="section-title"><span class="bar"></span>位次信息</div>
+    <table class="score-table">
+      <tr><th>校排名</th><th>班排名</th><th>主科校排名</th><th>选科校排名</th></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>2</td></tr>
+    </table>
+    <div class="practice-code"><div style="color:red;">校验防伪码：OWJS646WGVX186QPOSJC375SHCBCNWIAJOQ</div></div>
+    <div class="tips"><span class="tips-title">温馨提示</span><p><span style="color:red;">1.选考科目的分数为等级分数转化后的分数。<br>2.若考生某科目下显示"成绩无效"，则说明考生在考试期间存在违纪作弊行为。<br>3.总成绩=转化总分。<br>4.本页面成绩数据将根据学校统一管理同步更新。<br>5.文科类名次=主科+历政地，理科类名次=主科+物化生。<br>6.分科前九科满分为1050，分科后六科满分为750。</span></p></div>
+    <button class="history-btn" onclick="showHistory()"> 查看历史成绩列表</button>
+    <button class="exit-btn" onclick="hideExamDetail('examDetail20')">退 出</button>
+  </div>
+</div>
+<script>
+  function generateDetailWatermarks() {
+    var ids = [
+      'detailWatermark1', 'detailWatermark2', 'detailWatermark3', 'detailWatermark4', 'detailWatermark5',
+      'detailWatermark6', 'detailWatermark7', 'detailWatermark8', 'detailWatermark9', 'detailWatermark10',
+      'detailWatermark11', 'detailWatermark12', 'detailWatermark13', 'detailWatermark14', 'detailWatermark15',
+      'detailWatermark16', 'detailWatermark17', 'detailWatermark18', 'detailWatermark19', 'detailWatermark20'
+    ];
+    var text = '2024371401000330656';
+    for (var i = 0; i < ids.length; i++) {
+      var container = document.getElementById(ids[i]);
+      if (container) {
+        var html = '';
+        for (var j = 0; j < 300; j++) {
+          html += '<span class="line">' + text + '</span>';
+        }
+        container.innerHTML = html;
+      }
+    }
+  }
+  generateDetailWatermarks();
+// ===== 生成右上角二维码 =====
+function generateQR() {
+  var img = document.getElementById('qrImg');
+  if (img) {
+    var url = encodeURIComponent(window.location.href);
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=1fa350&bgcolor=ffffff&data=' + url;
+  }
+}
+generateQR();
+</script>
+  </body>
+</html>
